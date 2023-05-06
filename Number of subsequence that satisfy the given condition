@@ -1,0 +1,33 @@
+class Solution {
+    public int numSubseq(int[] nums, int target) {
+        int n=nums.length;
+        int mod=1000000007;
+
+        List<Integer>ans=new ArrayList<>();
+        ans.add(1);
+
+        for(int i=1;i<n;i++)
+        {
+            ans.add((ans.get(i-1)*2)%mod);
+
+        }
+        Arrays.sort(nums);
+        int i=0;
+        int j=nums.length-1;
+        int count=0;
+
+        while(i<=j)
+        {
+            if(nums[i]+nums[j]<=target)
+            {
+                count=(count+ans.get(j-i))%mod;
+                i++;
+            }
+            else{
+                j--;
+            }
+        }
+        return count;
+        
+    }
+}
