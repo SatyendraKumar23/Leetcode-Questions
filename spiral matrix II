@@ -1,0 +1,38 @@
+class Solution {
+    public int[][] generateMatrix(int n) {
+        int startrow=0;
+        int startcol=0;
+        int endrow=n-1;
+        int endcol=n-1;
+        int count=1;
+        int matrix[][]=new int[n][n];
+        while(count<=n*n)
+        {
+
+        
+        for(int i=startcol;i<=endcol&&count<=n*n;i++)
+        {
+             matrix[startrow][i]=count++;
+        }
+
+        for(int i=startrow+1;i<=endrow&&count<=n*n;i++)
+        {
+           matrix[i][endcol]=count++;
+        }
+        for(int i=endcol-1;i>=startcol&&count<=n*n;i--)
+        {
+            matrix[endrow][i]=count++;
+        }
+        for(int i=endrow-1;i>=startrow+1&&count<=n*n;i--)
+        {
+           matrix[i][startcol]=count++;
+        }
+        startrow++;
+        endrow--;
+        startcol++;
+        endcol--;
+        }
+
+        return matrix;
+    }
+}
